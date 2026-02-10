@@ -45,7 +45,7 @@ export default function Home() {
                 />
               </Link>
 
-              <Link href="#github">
+              <Link href="https://github.com/NottonSolution/Nextjs-Boilerplate-Frontend">
                 <Button
                   label="GitHub"
                   variant="primary"
