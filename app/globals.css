@@ -3,6 +3,8 @@
 :root {
   --main-theme: #ffff;
   --main-accent: #4901df;
-  --main-border: #ededed;
+  --main-border: #acacac;
   --disable: #adadad;
+  --error-border: #ff4343;
+  scroll-behavior: smooth;
 }
