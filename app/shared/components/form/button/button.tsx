@@ -7,7 +7,7 @@ interface IButtonProps {
   isLoading?: boolean;
   onClick?: () => void;
   type?: "submit" | "button";
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   iconAlign?: "left" | "right";
 }
 
@@ -25,7 +25,7 @@ export default function Button({
     variant === "primary" && !isLoading
       ? "bg-[var(--main-accent)]"
       : variant === "danger" && !isLoading
-        ? "bg-[#F3636]"
+        ? "bg-[var(--danger)]"
         : "bg-[var(--disable)]";
 
   const hover =
@@ -41,7 +41,7 @@ export default function Button({
     onClick();
   };
   const isCanShowIcon = !isLoading && icon;
-  const completeClass = `${className} w-full ${bgColor} ${fontColor} px-5 rounded-lg py-2 ${hover} duration-200 flex gap-2 items-center`;
+  const completeClass = `${className} w-full ${bgColor} ${fontColor} px-5 rounded-lg py-2 ${hover} duration-200 flex gap-2 justify-center items-center`;
   return (
     <>
       <button
@@ -51,7 +51,7 @@ export default function Button({
         className={completeClass}
       >
         {isCanShowIcon && iconAlign === "left" && <>{icon}</>}
-        {label}
+        <span className=""> {label}</span>
 
         {isLoading && <FaSpinner className="animate-spin text-xl" />}
         {isCanShowIcon && iconAlign === "right" && <>{icon}</>}
