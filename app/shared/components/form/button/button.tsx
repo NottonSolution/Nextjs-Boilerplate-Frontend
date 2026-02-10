@@ -6,6 +6,7 @@ interface IButtonProps {
   variant?: "primary" | "disable" | "danger";
   isLoading?: boolean;
   onClick?: () => void;
+  type?: "submit" | "button";
 }
 
 export default function Button({
@@ -14,6 +15,7 @@ export default function Button({
   variant = "primary",
   isLoading = false,
   onClick = () => {},
+  type = "submit",
 }: IButtonProps) {
   const bgColor =
     variant === "primary" && !isLoading
@@ -39,6 +41,7 @@ export default function Button({
   return (
     <>
       <button
+        type={type}
         onClick={clickHandler}
         disabled={isLoading}
         className={completeClass}
