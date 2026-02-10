@@ -5,6 +5,7 @@
   --main-accent: #4901df;
   --main-border: #acacac;
   --disable: #adadad;
+  --danger: #ff3030;
   --error-border: #ff4343;
   scroll-behavior: smooth;
 }

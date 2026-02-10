@@ -3,7 +3,7 @@ import Image from "next/image";
 import Button from "./shared/components/form/button/button";
 import Input from "./shared/components/form/input/input";
 import Link from "next/link";
-
+import { TbPlayerTrackNext } from "react-icons/tb";
 import { IoDocumentTextSharp } from "react-icons/io5";
 import TextArea from "./shared/components/form/textarea/textarea";
 export default function Home() {
@@ -12,23 +12,44 @@ export default function Home() {
       <div className="w-full h-full flex justify-center items-center">
         <div className="text-center flex flex-col items-center justify-center h-[500px] aspect-square rounded-full relative">
           <div className="w-full h-full flex justify-center items-center flex-col ">
-            <div className="rouned-full relative rounded-full overflow-hidden w-[170px] h-[150px] bg-white">
-              <Image
-                src={"/notton-logo.png"}
-                alt="notton-logo.png"
-                fill
-                className="object-fit "
-              />
+            <div className="relative w-[170px] h-[150px] flex items-center justify-center">
+              {/* soft backdrop */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-500/10 blur-xl" />
+
+              {/* logo container */}
+              <div className="relative rounded-full overflow-hidden w-[170px] h-[150px] bg-white shadow-md ring-1 ring-black/5">
+                <Image
+                  src="/notton-logo.png"
+                  alt="notton-logo.png"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
-            <h1 className="text-[3rem] font-bold ">Nextjs Boilerplate</h1>
-            <p className="font-semibold text-gray-400">by Notton Solution</p>
-            <div className="flex gap-1">
-              <Link href={"#component"}>
+
+            <h1 className="mt-6 text-[3rem] font-semibold tracking-tight text-gray-900">
+              Next.js Boilerplate
+            </h1>
+
+            <p className="mt-1 text-base text-gray-500">
+              Opinionated starter for modern React teams
+            </p>
+
+            <div className="mt-6 flex gap-2">
+              <Link href="#component">
                 <Button
                   label="Docs"
                   variant="primary"
-                  className="mt-2 font-semibold"
-                  icon={<IoDocumentTextSharp className="text-xl font-bold" />}
+                  className="font-medium"
+                  icon={<IoDocumentTextSharp className="text-lg" />}
+                />
+              </Link>
+
+              <Link href="#github">
+                <Button
+                  label="GitHub"
+                  variant="primary"
+                  className="font-medium"
                 />
               </Link>
             </div>
@@ -187,6 +208,91 @@ export default function Home() {
             {
               name: "className",
               desc: "Additional CSS or Tailwind classes for custom styling",
+              required: false,
+            },
+          ]}
+        />
+      </div>
+      <div className="w-full pb-20 flex px-20 gap-[5rem]">
+        <div>
+          <h2 className=" text-[1.5rem] font-bold">Button</h2>
+          <div className="w-full flex mt-2 gap-10">
+            <div className="w-[500px] pt-5">
+              <Button label="Primary" className="text-center mb-5" />
+              <Button
+                label="Danger"
+                className="text-center mb-5"
+                variant="danger"
+              />
+              <Button
+                label="Disable"
+                className="text-center mb-5"
+                variant="disable"
+              />
+              <Button
+                label="Icon Left"
+                className="text-center mb-5"
+                variant="primary"
+                iconAlign="left"
+                icon={<TbPlayerTrackNext />}
+              />
+              <Button
+                label="Icon Right"
+                className="text-center mb-5"
+                variant="primary"
+                icon={<TbPlayerTrackNext />}
+                iconAlign="right"
+              />
+
+              <Button
+                label="Loading"
+                className="text-center "
+                variant="disable"
+                isLoading={true}
+              />
+            </div>
+          </div>
+        </div>
+        <PropDetailsTable
+          rows={[
+            {
+              name: "label",
+              desc: "Text displayed inside the button",
+              required: true,
+            },
+            {
+              name: "className",
+              desc: "Additional CSS or Tailwind classes for custom styling",
+              required: false,
+            },
+            {
+              name: "variant",
+              desc: "Visual style of the button (primary, disable, danger)",
+              required: false,
+            },
+            {
+              name: "isLoading",
+              desc: "Shows loading state and disables interaction",
+              required: false,
+            },
+            {
+              name: "onClick",
+              desc: "Callback fired when the button is clicked",
+              required: false,
+            },
+            {
+              name: "type",
+              desc: "HTML button type (submit or button)",
+              required: false,
+            },
+            {
+              name: "icon",
+              desc: "Icon element displayed inside the button",
+              required: false,
+            },
+            {
+              name: "iconAlign",
+              desc: "Position of the icon relative to the label (left or right)",
               required: false,
             },
           ]}
