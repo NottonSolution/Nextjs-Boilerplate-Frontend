@@ -7,6 +7,8 @@ interface IButtonProps {
   isLoading?: boolean;
   onClick?: () => void;
   type?: "submit" | "button";
+  icon: React.ReactNode;
+  iconAlign?: "left" | "right";
 }
 
 export default function Button({
@@ -16,6 +18,8 @@ export default function Button({
   isLoading = false,
   onClick = () => {},
   type = "submit",
+  icon,
+  iconAlign = "right",
 }: IButtonProps) {
   const bgColor =
     variant === "primary" && !isLoading
@@ -36,7 +40,7 @@ export default function Button({
   const clickHandler = () => {
     onClick();
   };
-
+  const isCanShowIcon = !isLoading && icon;
   const completeClass = `${className} w-full ${bgColor} ${fontColor} px-5 rounded-lg py-2 ${hover} duration-200 flex gap-2 items-center`;
   return (
     <>
@@ -46,9 +50,11 @@ export default function Button({
         disabled={isLoading}
         className={completeClass}
       >
+        {isCanShowIcon && iconAlign === "left" && <>{icon}</>}
         {label}
 
         {isLoading && <FaSpinner className="animate-spin text-xl" />}
+        {isCanShowIcon && iconAlign === "right" && <>{icon}</>}
       </button>
     </>
   );

@@ -4,6 +4,8 @@ import Button from "./shared/components/form/button/button";
 import Input from "./shared/components/form/input/input";
 import Link from "next/link";
 
+import { IoDocumentTextSharp } from "react-icons/io5";
+import TextArea from "./shared/components/form/textarea/textarea";
 export default function Home() {
   return (
     <>
@@ -20,12 +22,13 @@ export default function Home() {
             </div>
             <h1 className="text-[3rem] font-bold ">Nextjs Boilerplate</h1>
             <p className="font-semibold text-gray-400">by Notton Solution</p>
-            <div className="flex gap-2">
+            <div className="flex gap-1">
               <Link href={"#component"}>
                 <Button
-                  label="Getting Start"
+                  label="Docs"
                   variant="primary"
-                  className="mt-2"
+                  className="mt-2 font-semibold"
+                  icon={<IoDocumentTextSharp className="text-xl font-bold" />}
                 />
               </Link>
             </div>
@@ -117,49 +120,73 @@ export default function Home() {
         <div>
           <h2 className=" text-[1.5rem] font-bold">Textarea</h2>
           <div className="w-full flex mt-2 gap-10">
-            <div className="w-[500px]"></div>
+            <div className="w-[500px]">
+              <TextArea
+                value=""
+                onChange={() => {}}
+                label="Textarea Input"
+                rows={7}
+              ></TextArea>
+              <TextArea
+                value=""
+                onChange={() => {}}
+                label="Error Textarea Input"
+                error="Value Required"
+                rows={7}
+              ></TextArea>
+            </div>
           </div>
         </div>
         <PropDetailsTable
           rows={[
             {
-              name: "value",
-              desc: "Current value of the input",
-              required: true,
-            },
-            {
-              name: "type",
-              desc: "HTML input type (e.g. text, password, email)",
-              required: false,
-            },
-            {
               name: "label",
-              desc: "Label text displayed above the input",
-              required: false,
-            },
-            {
-              name: "className",
-              desc: "Additional Tailwind / CSS classes for styling",
+              desc: "Label text displayed above the textarea",
               required: false,
             },
             {
               name: "placeholder",
-              desc: "Hint text shown inside the input",
+              desc: "Hint text shown inside the textarea",
               required: false,
             },
             {
               name: "error",
-              desc: "Error message displayed below the input",
+              desc: "Error message displayed below the textarea",
               required: false,
             },
             {
+              name: "value",
+              desc: "Current value of the textarea",
+              required: true,
+            },
+            {
               name: "onChange",
-              desc: "Callback fired when input value changes",
+              desc: "Callback fired when textarea value changes",
               required: true,
             },
             {
               name: "disabled",
-              desc: "Disables the input when set to true",
+              desc: "Disables the textarea when set to true",
+              required: false,
+            },
+            {
+              name: "rows",
+              desc: "Number of visible text lines for the textarea",
+              required: false,
+            },
+            {
+              name: "cols",
+              desc: "Visible width of the textarea in characters",
+              required: false,
+            },
+            {
+              name: "allowNewLine",
+              desc: "Allows or prevents new line input (Enter key)",
+              required: false,
+            },
+            {
+              name: "className",
+              desc: "Additional CSS or Tailwind classes for custom styling",
               required: false,
             },
           ]}
